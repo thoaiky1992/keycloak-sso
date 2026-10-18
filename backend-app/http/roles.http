@@ -1,0 +1,3 @@
+# Các request tạo role đã được tách thành hai file:
+# - realm-roles.http: tạo Realm role trong sso-demo.
+# - client-roles.http: tạo Client role cho clientId chỉ định.

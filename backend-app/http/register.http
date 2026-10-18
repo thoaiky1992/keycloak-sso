@@ -1,0 +1,14 @@
+@baseUrl = http://localhost:4000
+
+# Đổi username/email nếu gửi lại vì Keycloak không cho tạo trùng.
+POST {{baseUrl}}/api/users/register
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "test_5",
+  "password": "12345678",
+  "email": "test_5@example.com",
+  "firstName": "test",
+  "lastName": "5"
+}

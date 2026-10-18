@@ -1,0 +1,25 @@
+@baseUrl = http://localhost:4000
+
+# Chạy request này trước để lấy access token mới. REST Client đọc tài khoản từ http/.env.
+# @name adminLogin
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "{{$dotenv KEYCLOAK_API_ADMIN_USERNAME}}",
+  "password": "{{$dotenv KEYCLOAK_API_ADMIN_PASSWORD}}"
+}
+
+###
+
+# Sau khi adminLogin trả 200, tạo Realm role. Token được lấy từ response ở trên.
+POST {{baseUrl}}/api/roles/realm
+Authorization: Bearer {{adminLogin.response.body.$.access_token}}
+Content-Type: application/json
+Accept: application/json
+
+{
+  "name": "realm-editor-{{$timestamp}}",
+  "description": "Can edit content"
+}

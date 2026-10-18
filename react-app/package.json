@@ -1,0 +1,19 @@
+{
+  "name": "keycloak-sso-react-example",
+  "private": true,
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev:app1": "vite --mode app1 --host 127.0.0.1 --port 3000 --strictPort",
+    "dev:app2": "vite --mode app2 --host 127.0.0.1 --port 3001 --strictPort",
+    "build": "vite build"
+  },
+  "dependencies": {
+    "keycloak-js": "^26.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1"
+  },
+  "devDependencies": {
+    "vite": "^5.4.0"
+  }
+}

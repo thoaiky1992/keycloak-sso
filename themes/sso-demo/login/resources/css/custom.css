@@ -1,0 +1,357 @@
+/* The split layout is limited to the login form. Other Keycloak flows keep a card. */
+:root {
+  --sso-purple: #6c13dc;
+  --sso-deep-purple: #3e08d8;
+  --sso-ink: #171326;
+  --sso-muted: #827a9d;
+}
+
+.login-pf body {
+  min-height: 100vh;
+  color: var(--sso-ink);
+  background: linear-gradient(135deg, #4110ce, #9615e7 55%, #4500d8);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+#kc-header-wrapper {
+  color: #fff;
+  font-weight: 700;
+  letter-spacing: 0;
+  text-transform: none;
+}
+
+.login-pf-page .card-pf {
+  border: 0;
+  border-radius: 22px;
+  box-shadow: 0 24px 70px rgb(36 9 94 / 22%);
+  padding: 2rem;
+}
+
+.login-pf-page .pf-c-button.pf-m-primary,
+.login-pf-page .btn-primary {
+  background: linear-gradient(100deg, #a01ce2, #4200e7);
+  border: 0;
+  color: #fff;
+}
+
+.login-pf-page .pf-c-button.pf-m-primary:hover,
+.login-pf-page .pf-c-button.pf-m-primary:focus-visible,
+.login-pf-page .btn-primary:hover {
+  background: linear-gradient(100deg, #8915cd, #3200c7);
+  color: #fff;
+}
+
+/* Main login page inspired by the supplied purple and white reference. */
+.login-pf body[data-page-id="login-login"] {
+  background-image: url("../img/cloud-panel.svg"), linear-gradient(135deg, #4110ce, #9715ea 58%, #4500d8);
+  background-position: center, center;
+  background-repeat: no-repeat, no-repeat;
+  background-size: 100% 100%, cover;
+}
+
+body[data-page-id="login-login"] .login-pf-page {
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: min(100%, 1440px);
+  min-height: 100vh;
+  margin: 0 auto;
+  padding: clamp(120px, 16vh, 190px) clamp(48px, 8vw, 130px) clamp(150px, 19vh, 220px);
+}
+
+body[data-page-id="login-login"] #kc-header {
+  display: none;
+}
+
+body[data-page-id="login-login"] .card-pf {
+  width: 100%;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  box-shadow: none;
+}
+
+body[data-page-id="login-login"] .login-pf-header {
+  width: min(100%, 510px);
+  margin: 0 0 28px;
+  padding: 0;
+  text-align: center;
+}
+
+body[data-page-id="login-login"] #kc-page-title {
+  margin: 0;
+  color: #111;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.sso-hello {
+  display: block;
+  font-size: clamp(34px, 3vw, 46px);
+  font-weight: 750;
+  letter-spacing: -0.04em;
+}
+
+.sso-subtitle {
+  display: block;
+  margin-top: 4px;
+  color: #4d475d;
+  font-size: clamp(16px, 1.6vw, 20px);
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+body[data-page-id="login-login"] #kc-content-wrapper {
+  display: grid;
+  grid-template-columns: minmax(0, 510px) minmax(0, 1fr);
+  column-gap: clamp(60px, 8vw, 120px);
+  align-items: center;
+  margin: 0;
+}
+
+body[data-page-id="login-login"] #kc-form,
+body[data-page-id="login-login"] #kc-info,
+body[data-page-id="login-login"] #kc-social-providers,
+body[data-page-id="login-login"] #kc-content-wrapper > .pf-c-alert {
+  grid-column: 1;
+}
+
+body[data-page-id="login-login"] #kc-form {
+  float: none;
+  width: 100%;
+}
+
+body[data-page-id="login-login"] #kc-form-wrapper {
+  margin: 0;
+}
+
+.sso-welcome {
+  grid-column: 2;
+  grid-row: 1 / span 4;
+  align-self: center;
+  justify-self: center;
+  max-width: 440px;
+  padding-bottom: 1.5rem;
+  text-align: center;
+}
+
+.sso-welcome h2 {
+  margin: 0 0 22px;
+  color: #0e0d16;
+  font-size: clamp(30px, 3vw, 42px);
+  font-weight: 750;
+  letter-spacing: -0.035em;
+}
+
+.sso-welcome p {
+  margin: 0;
+  color: #514b60;
+  font-size: clamp(17px, 1.5vw, 20px);
+  line-height: 1.8;
+}
+
+body[data-page-id="login-login"] #kc-form-login > .form-group {
+  position: relative;
+  margin: 0 0 26px;
+}
+
+body[data-page-id="login-login"] #kc-form-login label[for="username"],
+body[data-page-id="login-login"] #kc-form-login label[for="password"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.sso-field-icon {
+  position: absolute;
+  z-index: 2;
+  top: 10px;
+  left: 15px;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 11px;
+  background: linear-gradient(150deg, #a720e4, #4200d5);
+  box-shadow: 0 5px 12px rgb(94 24 203 / 25%);
+  color: #fff;
+  pointer-events: none;
+}
+
+.sso-field-icon svg {
+  width: 24px;
+  height: 24px;
+}
+
+body[data-page-id="login-login"] #kc-form-login #username,
+body[data-page-id="login-login"] #kc-form-login #password {
+  width: 100%;
+  height: 64px;
+  padding: 0 68px 0 78px;
+  border: 1px solid #eeeaf8;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 9px 25px rgb(102 83 225 / 15%);
+  color: var(--sso-ink);
+  font-size: 16px;
+}
+
+body[data-page-id="login-login"] #kc-form-login input::placeholder {
+  color: #9c95b4;
+  opacity: 1;
+}
+
+body[data-page-id="login-login"] #kc-form-login #username:focus,
+body[data-page-id="login-login"] #kc-form-login #password:focus {
+  outline: 2px solid #7a27e4;
+  outline-offset: 2px;
+  box-shadow: 0 10px 27px rgb(102 83 225 / 22%);
+}
+
+body[data-page-id="login-login"] #kc-form-login .pf-c-input-group {
+  position: relative;
+  display: block;
+}
+
+body[data-page-id="login-login"] #kc-form-login .pf-c-input-group .pf-c-button {
+  position: absolute;
+  top: 8px;
+  right: 10px;
+  z-index: 2;
+  width: 48px;
+  height: 48px;
+  border: 0;
+  border-radius: 50%;
+  background: transparent;
+  color: #7e31d5;
+}
+
+body[data-page-id="login-login"] #kc-form-login .pf-c-input-group .pf-c-button:hover,
+body[data-page-id="login-login"] #kc-form-login .pf-c-input-group .pf-c-button:focus-visible {
+  background: #f5efff;
+}
+
+body[data-page-id="login-login"] #kc-form-login .login-pf-settings {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: -8px 0 0;
+  color: var(--sso-muted);
+  font-size: 14px;
+}
+
+body[data-page-id="login-login"] #kc-form-options .checkbox {
+  margin: 0;
+  color: var(--sso-muted);
+}
+
+body[data-page-id="login-login"] #rememberMe {
+  accent-color: var(--sso-purple);
+}
+
+body[data-page-id="login-login"] a {
+  color: #7c2be0;
+}
+
+body[data-page-id="login-login"] a:hover {
+  color: #4f0ec1;
+}
+
+body[data-page-id="login-login"] #kc-form-buttons {
+  margin: 30px 0 0;
+  text-align: center;
+}
+
+body[data-page-id="login-login"] #kc-login {
+  display: block;
+  width: min(100%, 260px);
+  height: 52px;
+  margin: 0 auto;
+  border: 0;
+  border-radius: 999px;
+  background: linear-gradient(100deg, #a01ce2, #4200e7);
+  box-shadow: 0 10px 18px rgb(107 28 216 / 22%);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+body[data-page-id="login-login"] #kc-login:hover,
+body[data-page-id="login-login"] #kc-login:focus-visible {
+  background: linear-gradient(100deg, #8915cd, #3200c7);
+  box-shadow: 0 11px 21px rgb(107 28 216 / 30%);
+}
+
+body[data-page-id="login-login"] #kc-info {
+  margin: 20px 0 0;
+  color: var(--sso-muted);
+  text-align: center;
+}
+
+body[data-page-id="login-login"] #kc-info-wrapper {
+  padding: 0;
+  background: transparent;
+  font-size: 14px;
+}
+
+body[data-page-id="login-login"] #kc-registration {
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .login-pf body[data-page-id="login-login"] {
+    background-image: linear-gradient(135deg, #4110ce, #9715ea 58%, #4500d8);
+  }
+
+  body[data-page-id="login-login"] .login-pf-page {
+    min-height: 100vh;
+    padding: 24px 16px;
+  }
+
+  body[data-page-id="login-login"] .card-pf {
+    width: min(100%, 560px);
+    margin: 0 auto;
+    padding: 36px 30px;
+    border-radius: 28px;
+    background: #fff;
+    box-shadow: 0 24px 70px rgb(36 9 94 / 24%);
+  }
+
+  body[data-page-id="login-login"] .login-pf-header {
+    width: 100%;
+  }
+
+  body[data-page-id="login-login"] #kc-content-wrapper {
+    display: block;
+  }
+
+  .sso-welcome {
+    display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  body[data-page-id="login-login"] .card-pf {
+    padding: 30px 20px;
+  }
+
+  .sso-hello {
+    font-size: 36px;
+  }
+
+  body[data-page-id="login-login"] #kc-form-login .login-pf-settings {
+    flex-wrap: wrap;
+  }
+}

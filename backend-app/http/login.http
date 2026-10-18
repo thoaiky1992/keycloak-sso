@@ -1,0 +1,17 @@
+@baseUrl = http://localhost:4000
+
+# Dùng tài khoản trong realm sso-demo. Realm role cần manage-realm; Client role cần manage-clients.
+# @name login
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+Accept: application/json
+
+{
+  "username": "thoaiky1992",
+  "password": "123456"
+}
+
+### Gửi request login phía trên trước để lấy access token mới (có scope openid)
+GET {{baseUrl}}/api/users/me
+Authorization: Bearer {{login.response.body.$.access_token}}
+Accept: application/json
